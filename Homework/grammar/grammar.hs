@@ -1,4 +1,4 @@
-type Program = [Statement] -- a program is a list of statements
+==type Program = [Statement] -- a program is a list of statements
 
 data Identifier = String
 

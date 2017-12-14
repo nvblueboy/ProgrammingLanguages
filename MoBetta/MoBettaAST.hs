@@ -1,5 +1,9 @@
 module MoBettaAST where
 
+-- Declare the abstract syntax of MoBetta
+-- Shared between parser and interpreter
+-- All types here derive Show for debugging.
+
 type Program = [Statement]
 
 data Statement
@@ -20,8 +24,8 @@ data BExpr
   | BUn UnBOp BExpr
   deriving (Show)
 
-data BinBOp = And | Or deriving (Show, Eq)
-data UnBOp = Not deriving (Show, Eq)
+data BinBOp = And | Or deriving (Show,Eq)
+data UnBOp = Not deriving (Show,Eq)
 
 data Comp
   = Less
@@ -30,16 +34,16 @@ data Comp
   | GreaterEqual
   | Equal
   | NEqual
-  deriving (Show, Eq)
+  deriving (Show,Eq)
 
+-- Refactored to reduce the number of cases in evaluation.
 data AExpr
   = Var String
   | IntConst Integer
-  | Add AExpr AExpr
-  | Sub AExpr AExpr
-  | Mul AExpr AExpr
-  | Div AExpr AExpr
-  | Mod AExpr AExpr
-  | Neg AExpr
+  | ABin BinAOp AExpr AExpr
+  | AUn UnAOp AExpr
   deriving (Show)
 
+data BinAOp = Add | Sub | Mul | Div | Mod deriving (Show,Eq)
+
+data UnAOp = Neg deriving (Show, Eq)

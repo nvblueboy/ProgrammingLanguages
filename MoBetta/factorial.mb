@@ -1,4 +1,3 @@
-// A factorial program
 message "Enter an integer: ";
 read n;
 saveN = n;

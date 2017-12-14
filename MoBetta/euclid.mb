@@ -1,4 +1,3 @@
-// Euclid's Algorithm
 message "Enter an integer: ";
 read a;
 saveA = a;
